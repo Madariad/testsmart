@@ -12,6 +12,11 @@ import Footer from "../FooterSection/Footer";
 import TestimonialSection from "../TestimonialSection/TestimonialSection";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+
+const theme = createTheme({
+
+});
+
 function MainComponents() {
     return (
         <>

@@ -12,8 +12,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['особенность', 'отзывы', 'примеры', 'о нас'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = [ 'особенность', 'отзывы', 'примеры', 'о нас'];
+
+// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -29,10 +30,26 @@ function ResponsiveAppBar() {
 
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (e) => {
     setAnchorElNav(null);
-    console.log(anchorElNav);
-    
+    const targetValue = e.target.textContent
+    switch (targetValue) {
+      case 'особенность':
+        console.log('sdsdd');
+        break;
+      case 'отзывы': 
+
+         break
+      case 'примеры': 
+
+         break
+      case 'о нас': 
+
+         break
+       
+      default:
+        break;
+    }
   };
 
   const handleCloseUserMenu = () => {
@@ -127,6 +144,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
+                href={'#' + page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
@@ -135,7 +153,7 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -158,7 +176,7 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>
