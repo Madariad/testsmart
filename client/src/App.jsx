@@ -10,7 +10,8 @@ function App() {
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainComponents />}/>
-          <Route path="/test/:12" element={9} />
+          {/* <Route path="/test/:12" element={9} /> */}
+          {/* <Route path="/login" element={'jjsjdsjd'} /> */}
         </Routes>
     </BrowserRouter>
     </>

@@ -1,15 +1,15 @@
-import Navbar from "../navbarSection/navbar";
-import Banner from "../bannerSection/banner";
-import FeaturesSection from "../FeaturesSection/FeaturesSection";
-import ExampleSection from "../ExampleSection/ExampleSection";
-import AboutSection from "../AboutSection/AboutSection";
-import FAQSection from "../FAQSection/FAQSection";
-import ContactSection from "../ContactSection/ContactSection";
-import CallToActionSection from "../CallToActionSection/CallToActionSection";
-import Footer from "../FooterSection/Footer";
+import Navbar from "./navbarSection/navbar";
+import Banner from "./bannerSection/banner";
+import FeaturesSection from "./FeaturesSection/FeaturesSection";
+import ExampleSection from "./ExampleSection/ExampleSection";
+import AboutSection from "./AboutSection/AboutSection";
+import FAQSection from "./FAQSection/FAQSection";
+import ContactSection from "./ContactSection/ContactSection";
+import CallToActionSection from "./CallToActionSection/CallToActionSection";
+import Footer from "./FooterSection/Footer";
 
 
-import TestimonialSection from "../TestimonialSection/TestimonialSection";
+import TestimonialSection from "./TestimonialSection/TestimonialSection";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 
