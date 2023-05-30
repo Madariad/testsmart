@@ -28,18 +28,18 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.white,
     textAlign: 'center',
     padding: theme.spacing(2),
-    backdropFilter: 'brightness(0.5)', // Add a backdrop filter for a stylish effect
-    backdropBlur: '10px', // Adjust the backdrop blur effect
+    backdropFilter: 'brightness(0.5)', 
+    backdropBlur: '10px', 
   },
   title: {
-    fontSize: '3.5rem', // Increase the font size for a bolder title
+    fontSize: '3.5rem', 
     marginBottom: theme.spacing(2),
     fontWeight: 'bold',
-    textShadow: `2px 2px 4px rgba(0, 0, 0, 0.5)`, // Add a text shadow for better visibility
+    textShadow: `2px 2px 4px rgba(0, 0, 0, 0.5)`, 
   },
   subtitle: {
-    fontSize: '1.75rem', // Increase the font size for a bolder subtitle
-    textShadow: `1px 1px 2px rgba(0, 0, 0, 0.5)`, // Add a text shadow for better visibility
+    fontSize: '1.75rem', 
+    textShadow: `1px 1px 2px rgba(0, 0, 0, 0.5)`, 
   },
 }));
 
@@ -56,10 +56,10 @@ function Banner() {
       <div className={classes.content}>
         <Container maxWidth="xl">
           <Typography variant="h1" component="h2" className={classes.title}>
-            Welcome to Our Website
+            SMART
           </Typography>
           <Typography variant="h2" component="h3" className={classes.subtitle}>
-            Explore our services and discover the possibilities
+            SUBTITLE
           </Typography>
         </Container>
       </div>

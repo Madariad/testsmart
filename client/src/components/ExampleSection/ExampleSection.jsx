@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Grid, Card, CardContent, CardMedia } from '@material-ui/core';
+import { Typography, Grid, Card, CardContent, CardMedia, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -61,6 +61,7 @@ const ExampleSection = () => {
 
   return (
     <section className={classes.exampleSection}>
+      <Container maxWidth="lg">
       <Typography variant="h4" align="center" gutterBottom>
         Применение в реальных ситуациях
       </Typography>
@@ -84,6 +85,7 @@ const ExampleSection = () => {
           </Grid>
         ))}
       </Grid>
+      </Container>
     </section>
   );
 };

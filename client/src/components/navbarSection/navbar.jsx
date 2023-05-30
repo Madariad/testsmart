@@ -11,9 +11,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['особенность', 'отзывы', 'примеры', 'о нас', 'отзывы'];
+const pages = ['особенность', 'отзывы', 'примеры', 'о нас'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -22,24 +21,31 @@ function ResponsiveAppBar() {
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
+    console.log('handleOpenNavMenu');
   };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
+    console.log('handleOpenUserMenu');
+
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+    console.log(anchorElNav);
+    
   };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+    console.log('handleCloseUserMenu');
+
   };
 
   return (
     <AppBar position="static">
       <Container maxWidth="lg">
         <Toolbar disableGutters>
-        <Tooltip title="logo" sx={{ display: { xs: 'none', md: 'flex' }, mr: 2}}>
+        <Tooltip href="/" title="logo" sx={{ display: { xs: 'none', md: 'flex' }, mr: 2}}>
                 <Avatar alt="smart logo" src="../../images/logo.jpg" />
          </Tooltip>
           <Typography
@@ -96,7 +102,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <Tooltip title="logo" sx={{ display: { xs: 'flex', md: 'none' }, mr: 2}}>
+          <Tooltip href="/" title="logo" sx={{ display: { xs: 'flex', md: 'none' }, mr: 2}}>
                 <Avatar alt="smart logo" src="../../images/logo.jpg" />
          </Tooltip>
           <Typography
