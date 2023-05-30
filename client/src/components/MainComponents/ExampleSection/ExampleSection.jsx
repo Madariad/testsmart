@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography, Grid, Card, CardContent, CardMedia, Container } from '@material-ui/core';
+import Fade from 'react-reveal/Fade';
+import Zoom from 'react-reveal/Zoom';
+import ScrollTrigger from 'react-scroll-trigger';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   exampleSection: {
     padding: theme.spacing(6),
-    backgroundColor: '#9ffffe',
+    backgroundColor: '#FF4081',
     borderRadius: '50px',
     color: theme.palette.common.white,
     marginBottom: '10%',
@@ -37,54 +41,94 @@ const useStyles = makeStyles((theme) => ({
 
 const ExampleSection = () => {
   const classes = useStyles();
+  const [visible, setVisible] = useState(false);
 
   const examples = [
     {
       id: 1,
-      title: 'Повышение продуктивности команды',
-      description: 'Узнайте, как наша платформа помогла команде Smart улучшить совместную работу, увеличить эффективность процессов и достичь поставленных целей.',
-      image: '../../public/images/88.png',
+      title: 'Работа и карьера',
+      description: 'Опишите, какое преимущество может дать владение английским языком при поиске работы и продвижении по карьерной лестнице. Укажите на возможности работы в международных компаниях, возможность путешествий и общения с коллегами из разных стран.',
+      image: '../../public/images/example1.png',
     },
     {
       id: 2,
-      title: 'Улучшение клиентского опыта',
-      description: 'Узнайте, как наша услуга Smart помогла компании улучшить взаимодействие с клиентами, повысить уровень обслуживания и удовлетворенность клиентов.',
-      image: '../../public/images/88.png',
+      title: 'Путешествия',
+      description: 'Расскажите о том, как знание английского языка может облегчить путешествия по англоязычным странам. Укажите на возможность общения с местными жителями, понимания указателей и информации на туристических объектах, заказа еды в ресторанах и многое другое.',
+      image: '../../public/images/example2.png',
     },
     {
       id: 3,
-      title: 'Сокращение затрат и повышение эффективности',
-      description: 'Узнайте, как наш продукт Smart помог организации снизить операционные затраты, оптимизировать рабочие процессы и достичь большей производительности.',
-      image: '../../public/images/88.png',
+      title: 'Образование',
+      description: 'Подчеркните важность английского языка при получении высшего образования за рубежом, участии в международных программах обмена студентами или просмотре лекций и материалов на английском языке.',
+      image: '../../public/images/example3.png',
+    },
+    {
+      id: 4,
+      title: 'Культура и развлечения',
+      description: 'Укажите на доступность источников развлечения на английском языке, таких как фильмы, музыка, книги и игры. Подчеркните возможность погружения в англоязычную культуру через изучение языка.',
+      image: '../../public/images/example4.png',
+    },
+    {
+      id: 5,
+      title: 'Межкультурное понимание',
+      description: 'Объясните, как изучение английского языка помогает улучшить межкультурное понимание и коммуникацию. Укажите на значимость умения общаться с людьми из разных культур и понимать их традиции, обычаи и ценности.',
+      image: '../../public/images/example5.png',
+    },
+    {
+      id: 6,
+      title: 'Межкультурное понимание',
+      description: 'Объясните, как изучение английского языка помогает улучшить межкультурное понимание и коммуникацию. Укажите на значимость умения общаться с людьми из разных культур и понимать их традиции, обычаи и ценности.',
+      image: '../../public/images/example5.png',
     },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const windowHeight = window.innerHeight;
+      const triggerTop = windowHeight * 0.9; // Начинать анимацию, когда элемент находится на 90% видимости
+
+      if (scrollTop > triggerTop) {
+        setVisible(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <section className={classes.exampleSection}>
       <Container maxWidth="lg">
-      <Typography variant="h4" align="center" gutterBottom>
-        Применение в реальных ситуациях
-      </Typography>
-      <Grid container spacing={3}>
-        {examples.map((example) => (
-          <Grid item xs={12} sm={6} md={4} key={example.id}>
-            <Card className={classes.exampleCard}>
-              <CardMedia
-                className={classes.exampleImage}
-                component="img"
-                image={example.image}
-                alt={example.title}
-              />
-              <CardContent>
-                <Typography variant="h6" className={classes.exampleTitle}>
-                  {example.title}
-                </Typography>
-                <Typography variant="body2">{example.description}</Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+        <Typography variant="h4" align="center" gutterBottom>
+          Применение в реальных ситуациях
+        </Typography>
+        <Grid container spacing={4}>
+          {examples.map((example) => (
+            <Grid item xs={12} sm={6} md={4} key={example.id}>
+              <ScrollTrigger onEnter={() => setVisible(true)}>
+                <Fade when={visible}>
+                  <Card className={classes.exampleCard}>
+                    <CardMedia
+                      className={classes.exampleImage}
+                      component="img"
+                      image={example.image}
+                      alt={example.title}
+                    />
+                    <CardContent>
+                      <Typography variant="h6" className={classes.exampleTitle}>
+                        {example.title}
+                      </Typography>
+                      <Typography variant="body2">{example.description}</Typography>
+                    </CardContent>
+                  </Card>
+                </Fade>
+              </ScrollTrigger>
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </section>
   );

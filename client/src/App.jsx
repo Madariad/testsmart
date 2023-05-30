@@ -1,24 +1,38 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Navigate, Routes } from 'react-router-dom';
 import MainComponents from "./components/MainComponents/MainComponents";
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-
-
+import LoginComponent from "./components/loginComponents/loginForm/login";
+import TeachersAndStudentsSection from "./components/TeachersAndStudentsComponents/ListSection"
 
 function App() {
- 
+  const isAuthenticated = localStorage.getItem('token') // check if user is authenticated, e.g., by checking the presence of a token in localStorage
+
   return (
-    <>
-    <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<MainComponents />}/>
-          {/* <Route path="/test/:12" element={9} /> */}
-          {/* <Route path="/login" element={'jjsjdsjd'} /> */}
-        </Routes>
-    </BrowserRouter>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route
+          path="/login"
+          element={
+            isAuthenticated ? (
+              <Navigate to="/" replace /> // Redirect to main page if user is already authenticated
+            ) : (
+              <LoginComponent />
+            )
+          }
+        />
+        <Route path="/" element={<MainComponents />} />
+        <Route path="/personList" element={<TeachersAndStudentsSection />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
+
+
+
+{/* <Route path="/test/:12" element={9} /> */}
+
 
 {/* <Link to={`/van/${van.id}`}> test </Link> */}
 // useParams

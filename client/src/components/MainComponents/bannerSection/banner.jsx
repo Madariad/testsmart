@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
   banner: {
     position: 'relative',
     width: '100%',
-    height: '80vh',
+    height: '90vh',
     overflow: 'hidden',
   },
   image: {
@@ -47,7 +47,7 @@ function Banner() {
   const classes = useStyles();
 
   return (
-    <div className={classes.banner}>
+    <div  className={classes.banner}>
       <img
         src="../../images/banner2.png"
         alt="Banner Image"
