@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Navigate, Routes } from 'react-router-d
 import MainComponents from "./components/MainComponents/MainComponents";
 import LoginComponent from "./components/loginComponents/loginForm/login";
 import TeachersAndStudentsSection from "./components/TeachersAndStudentsComponents/ListSection"
+import TestSections from "./components/testComponent/testSections/testSections"
 
 function App() {
   const isAuthenticated = localStorage.getItem('token') 
@@ -22,6 +23,8 @@ function App() {
         />
         <Route path="/" element={<MainComponents />} />
         <Route path="/personList" element={<TeachersAndStudentsSection />} />
+        <Route path="/test" element={<TestSections />} />
+
       </Routes>
     </Router>
   );

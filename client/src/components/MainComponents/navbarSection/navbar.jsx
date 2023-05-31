@@ -12,14 +12,6 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
-// import { Redirect } from 'react-router-dom';
-// import { RedirectFunction } from 'react-router-dom';
-
-// import { useNavigate } from 'react-router-dom';
-
-// const navigateTo = useNavigate();
-
-
 
 import { BrowserRouter as Router, Route, Navigate, Routes } from 'react-router-dom';
 
@@ -100,7 +92,7 @@ function ResponsiveAppBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#05f5a5',
               textDecoration: 'none',
             }}
           >
@@ -156,9 +148,9 @@ function ResponsiveAppBar() {
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
               fontFamily: 'monospace',
-              fontWeight: 700,
+              fontWeight: 900,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#05f5a5',
               textDecoration: 'none',
             }}
           >
@@ -169,9 +161,9 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 href={'#' + page}
-                style={{color: 'black'}}
+                style={{color: '#05f5a5'}}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: '#9429ff', display: 'block' }}
+                sx={{ my: 2, color: '#a342ff', display: 'block' }}
               >
                 {page}
               </Button>

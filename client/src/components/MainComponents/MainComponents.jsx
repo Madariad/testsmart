@@ -7,6 +7,7 @@ import FAQSection from "./FAQSection/FAQSection";
 import ContactSection from "./ContactSection/ContactSection";
 import CallToActionSection from "./CallToActionSection/CallToActionSection";
 import Footer from "./FooterSection/Footer";
+import EnglishTestSection from "./englishTestSection/EnglishTestSection";
 
 
 import TestimonialSection from "./TestimonialSection/TestimonialSection";
@@ -27,6 +28,7 @@ function MainComponents() {
             <FeaturesSection />
             <TestimonialSection />
             <ExampleSection/>
+            <EnglishTestSection />
             <AboutSection/>
             <FAQSection />
             <ContactSection/>
