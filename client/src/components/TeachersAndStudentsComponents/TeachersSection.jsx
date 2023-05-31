@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
@@ -8,24 +8,35 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
+import axiosConfig from "../axiosConfig";
 
-const data = [
-  { name: 'Учитель 1', role: 'Учитель', avatar: '../../public/images/Avatar-Maker-768x835.png' },
-  { name: 'Ученик 1', role: 'Ученик', avatar: '../../public/images/Avatar-Maker-768x835.png' },
-  { name: 'Учитель 2', role: 'Учитель', avatar: '../../public/images/Avatar-Maker-768x835.png' },
-  { name: 'Ученик 2', role: 'Ученик', avatar: '../../public/images/Avatar-Maker-768x835.png' },
-];
 
-const TeachersSection = () => (
-  <Box sx={{ padding: '40px' }}>
-    <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: '30px' }}>
-      Учителя
-    </Typography>
-    <Grid container spacing={4}>
-      {data
-        .filter((item) => item.role === 'Учитель')
-        .map((item) => (
-          <Grid item xs={6} sm={4} md={3} key={item.name}>
+
+const TeachersSection = () => {
+  const [teachers, setTeachers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axiosConfig.get('/api/v1/teachers');
+        const data = await response.data;
+        setTeachers(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <Box sx={{ padding: '40px' }}>
+      <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: '30px' }}>
+      Учители
+      </Typography>
+      <Grid container spacing={4}>
+        {teachers.map((student) => (
+          <Grid item xs={6} sm={4} md={3} key={student.id}>
             <Box
               sx={{
                 display: 'flex',
@@ -38,20 +49,20 @@ const TeachersSection = () => (
               }}
             >
               <Avatar
-                alt={item.name}
-                src={item.avatar}
+                alt={`${student.first_name} ${student.last_name}`}
+                src={student.avatar}
                 sx={{ width: '100px', height: '100px', marginBottom: '10px' }}
               />
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold', textAlign: 'center' }}>
-                {item.name}
+                {`${student.first_name} ${student.last_name}`}
               </Typography>
               <Typography variant="body2" sx={{ textAlign: 'center' }}>
-                {item.role}
+                Учител
               </Typography>
             </Box>
           </Grid>
         ))}
-    </Grid>
-  </Box>
-);
+      </Grid>
+    </Box>
+  )};
 export default TeachersSection

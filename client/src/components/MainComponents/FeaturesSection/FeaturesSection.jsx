@@ -41,7 +41,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
+    <Container maxWidth="lg" sx={{ py: 8 }} >
       <Typography variant="h4" component="h2" align="center" sx={{ mb: 4, color: '#333' }}>
         Ключевые особенности
       </Typography>
