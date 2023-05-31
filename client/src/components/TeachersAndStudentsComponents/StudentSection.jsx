@@ -10,11 +10,11 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 
 const data = [
-    { name: 'Учиник 1', role: 'Учитель', avatar: '/avatars/teacher1.jpg' },
-    { name: 'Учиник 1', role: 'Ученик', avatar: '/avatars/student1.jpg' },
-    { name: 'Учиник 2', role: 'Учитель', avatar: '/avatars/teacher2.jpg' },
-    { name: 'Учиник 2', role: 'Ученик', avatar: '/avatars/student2.jpg' },
-    // Добавьте своих учеников и учителей в массив данных
+    { name: 'Учиник 1', role: 'Учитель', avatar: '../../public/images/beautiful-latin-woman-avatar.jpg' },
+    { name: 'Учиник 1', role: 'Ученик', avatar: '../../public/images/beautiful-latin-woman-avatar.jpg' },
+    { name: 'Учиник 2', role: 'Учитель', avatar: '../../public/images/beautiful-latin-woman-avatar.jpg' },
+    { name: 'Учиник 2', role: 'Ученик', avatar: '../../public/images/beautiful-latin-woman-avatar.jpg' },
+
   ];
 
 const StudentsSection = () => (

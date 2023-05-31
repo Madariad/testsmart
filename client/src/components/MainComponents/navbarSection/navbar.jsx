@@ -12,10 +12,21 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
+// import { RedirectFunction } from 'react-router-dom';
+
+// import { useNavigate } from 'react-router-dom';
+
+// const navigateTo = useNavigate();
+
+
+
+import { BrowserRouter as Router, Route, Navigate, Routes } from 'react-router-dom';
+
 
 const pages = ['особенность', 'отзывы', 'примеры', 'о нас'];
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['профиль', 'список учиников и учителей', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -49,8 +60,18 @@ function ResponsiveAppBar() {
       case 'отзывы':
         break;
       case 'примеры':
+
         break;
       case 'о нас':
+        break;
+      case 'список учиников и учителей':
+        console.log('список учиников и учителей');
+        <Navigate to="/personList" replace /> 
+
+        // navigateTo('/personList')
+        // return <Redirect to="/personList" />
+        // <RedirectFunction to={{ pathname: '/personList' }} />
+
         break;
       default:
         break;
@@ -62,7 +83,7 @@ function ResponsiveAppBar() {
     console.log('handleCloseUserMenu');
   };
   return (
-    <AppBar position="absolute" color="transparent"  sx={{backdropFilter:"blur(20px)", top: '20px', width: '80%', left: '10%'}}>
+    <AppBar position="sticky" color="transparent"  sx={{backdropFilter:"blur(20px)", top: '20px', width: '80%', left: '10%'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Tooltip href="/" title="logo" sx={{ display: { xs: 'none', md: 'flex' }, mr: 2 }}>
@@ -161,7 +182,7 @@ function ResponsiveAppBar() {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Remy Sharp" src="../../public/images/beautiful-latin-woman-avatar.jpg" />
                 </IconButton>
               </Tooltip>
               <Menu
@@ -181,7 +202,7 @@ function ResponsiveAppBar() {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <MenuItem key={setting} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}

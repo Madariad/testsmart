@@ -5,7 +5,7 @@ import LoginComponent from "./components/loginComponents/loginForm/login";
 import TeachersAndStudentsSection from "./components/TeachersAndStudentsComponents/ListSection"
 
 function App() {
-  const isAuthenticated = localStorage.getItem('token') // check if user is authenticated, e.g., by checking the presence of a token in localStorage
+  const isAuthenticated = localStorage.getItem('token') 
 
   return (
     <Router>
@@ -14,7 +14,7 @@ function App() {
           path="/login"
           element={
             isAuthenticated ? (
-              <Navigate to="/" replace /> // Redirect to main page if user is already authenticated
+              <Navigate to="/" replace /> 
             ) : (
               <LoginComponent />
             )
