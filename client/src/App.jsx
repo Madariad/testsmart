@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Navigate, Routes } from 'react-router-dom';
 import MainComponents from "./components/MainComponents/MainComponents";
-import LoginComponent from "./components/loginComponents/loginForm/login";
+import TeachersLoginForm from "./components/loginComponents/teachersLoginForm/login";
+import StudentsLoginForm from "./components/loginComponents/studentsLoginForm/login";
+
 import TeachersAndStudentsSection from "./components/TeachersAndStudentsComponents/ListSection"
 import TestSections from "./components/testComponent/testSections/testSections"
 
@@ -12,12 +14,22 @@ function App() {
     <Router>
       <Routes>
         <Route
-          path="/login"
+          path="/teachers/login"
           element={
             isAuthenticated ? (
               <Navigate to="/" replace /> 
             ) : (
-              <LoginComponent />
+              <TeachersLoginForm />
+            )
+          }
+        />
+         <Route
+          path="/students/login"
+          element={
+            isAuthenticated ? (
+              <Navigate to="/" replace /> 
+            ) : (
+              <StudentsLoginForm />
             )
           }
         />

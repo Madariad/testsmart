@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Typography, Container, Radio, RadioGroup, FormControl, FormControlLabel, Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const TestSection = () => {
   const questions = [
@@ -102,7 +103,7 @@ const TestSection = () => {
             ))}
           </RadioGroup>
         </FormControl>
-        <Button variant="contained" color="primary" onClick={handleNextQuestion} style={{ marginTop: '20px' }}>
+        <Button variant="contained" color="primary" onClick={handleNextQuestion} style={{ marginTop: '200px' }}>
           Next
         </Button>
       </div>
@@ -123,9 +124,13 @@ const TestSection = () => {
         <Typography variant="h6" gutterBottom>
           Score: {score} / {questions.length}
         </Typography>
-        <Button variant="contained" color="primary" onClick={handleSubmit} style={{ marginTop: '20px' }}>
-          Submit
-        </Button>
+        <Link to={'/'}>
+
+          <Button variant="contained" color="primary" onClick={handleSubmit} style={{ marginTop: '20px' }}>
+            вернуться назад
+          </Button>
+
+        </Link>
       </div>
     );
   };

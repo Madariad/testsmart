@@ -10,7 +10,7 @@ const getStudents = (req, res) => {
 
 const getStudentsById = (req, res) => {
   const userId = req.params.id;
-  students.getUserById(userId, (user) => {
+  students.getStudentsById(userId, (user) => {
     res.json(user);
   });
 };

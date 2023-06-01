@@ -47,14 +47,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     color: '#999999',
   },
-  decoration: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '200px',
-    height: '200px',
-  },
+
 }));
 
 const CallToActionSection = () => {
@@ -72,15 +65,14 @@ const CallToActionSection = () => {
         "Образование - это самое мощное оружие, которое вы можете использовать для изменения мира." - Нельсон Мандела
       </Typography>
       <Link to={'/test'}>
-      <Button variant="contained" className={classes.button}>
-         Начать тест
-      </Button>
+        <Button variant="contained" className={classes.button}>
+          Начать тест
+        </Button>
       </Link>
       <Box className={classes.additionalElement}>
         <Typography variant="body2" gutterBottom>
-          Этот элемент также украшает секцию!
+         title
         </Typography>
-        <div className={classes.decoration} style={{ backgroundImage: 'url(https://example.com/decoration-image.jpg)' }} />
       </Box>
     </section>
   );

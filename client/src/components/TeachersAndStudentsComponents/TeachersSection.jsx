@@ -50,7 +50,7 @@ const TeachersSection = () => {
             >
               <Avatar
                 alt={`${student.first_name} ${student.last_name}`}
-                src={student.avatar}
+                src="../../../public/images/teachers.jpg"
                 sx={{ width: '100px', height: '100px', marginBottom: '10px' }}
               />
               <Typography variant="subtitle1" sx={{ fontWeight: 'bold', textAlign: 'center' }}>

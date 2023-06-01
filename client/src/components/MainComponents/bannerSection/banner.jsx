@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
-import { Typography, Container } from '@mui/material';
+
 
 const useStyles = makeStyles((theme) => ({
   banner: {
@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
     overflow: 'hidden',
     top: '-70px',
-    
   },
   image: {
     position: 'absolute',
@@ -19,10 +18,20 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
     objectFit: 'cover',
     zIndex: -1,
-    backgroundSize: "contain"
+    backgroundSize: "contain",
   },
-
-
+  '@media (max-width: 1449px)': {
+    image: {
+      content: `url("../../images/banner3resaizepng.png")`,
+    },
+  },
+  '@media (min-width: 1449px) and (min-height: 821px)': {
+    image: {
+      content: `url("../../images/banner3.png")`
+    }
+  }
+  
+  
 }));
 
 function Banner() {
@@ -30,12 +39,7 @@ function Banner() {
 
   return (
     <div className={classes.banner}>
-      <img
-        src="../../images/banner3.png"
-        alt="Banner Image"
-        className={classes.image}
-      />
-    
+      <div className={classes.image}></div>
     </div>
   );
 }

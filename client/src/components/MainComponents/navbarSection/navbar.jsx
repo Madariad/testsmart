@@ -12,8 +12,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import axiosConfig from "../../axiosConfig";
+import {Grid} from '@material-ui/core'
 
 import { BrowserRouter as Router, Route, Navigate, Routes } from 'react-router-dom';
+
 
 
 const pages = ['особенность', 'отзывы', 'примеры', 'о нас'];
@@ -24,13 +27,23 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [loginState, setLoginState] = React.useState(null);
-  const token = localStorage.getItem('token');
 
   React.useEffect(() => {
-    if (token) {
-      setLoginState(true);
-    }
-  }, [token]);
+    const handleCheckAuth = () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        setLoginState(true);
+      }
+    };
+  
+    const intervalId = setInterval(handleCheckAuth, 500);
+  
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+  
+
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -45,30 +58,30 @@ function ResponsiveAppBar() {
   const handleCloseNavMenu = (e) => {
     setAnchorElNav(null);
     const targetValue = e.target.textContent;
-    switch (targetValue) {
-      case 'особенность':
-        console.log('sdsdd');
-        break;
-      case 'отзывы':
-        break;
-      case 'примеры':
-
-        break;
-      case 'о нас':
-        break;
-      case 'список учиников и учителей':
-        console.log('список учиников и учителей');
-        <Navigate to="/personList" replace /> 
-
-        // navigateTo('/personList')
-        // return <Redirect to="/personList" />
-        // <RedirectFunction to={{ pathname: '/personList' }} />
-
-        break;
-      default:
-        break;
+  }
+  const log = async () => {
+    try {
+      const token = localStorage.getItem('token');
+  
+      await axiosConfig.post(
+        '/api/v1/students/logout',
+        {},
+        {
+          headers: {
+            Authorization: token, 
+          },
+        }
+      );
+  
+      localStorage.removeItem('token');
+      window.location.reload();
+      
+    } catch (error) {
+      console.log(error);
     }
   };
+  
+  
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
@@ -156,8 +169,50 @@ function ResponsiveAppBar() {
           >
             SMART
           </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+              <Button
+                    href={'/'}
+                    style={{color: '#05f5a5'}}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: '#a342ff', display: 'block' }}
+                  >
+                    особенность
+                  </Button>
+                  <Button
+                    href={'/'}
+                    style={{color: '#05f5a5'}}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: '#a342ff', display: 'block' }}
+                  >
+                    отзывы
+                  </Button>
+                  <Button
+                    href={'/'}
+                    style={{color: '#05f5a5'}}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: '#a342ff', display: 'block' }}
+                  >
+                    примеры
+                  </Button>
+                  <Button
+                    href={'/'}
+                    style={{color: '#05f5a5'}}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: '#a342ff', display: 'block' }}
+                  >
+                    о нас
+                  </Button>
+
+
+
+
+
+
+
+
+
+            {/* {pages.map((page) => (
               <Button
                 key={page}
                 href={'#' + page}
@@ -167,7 +222,7 @@ function ResponsiveAppBar() {
               >
                 {page}
               </Button>
-            ))}
+            ))} */}
           </Box>
 
           {loginState ? (
@@ -193,19 +248,40 @@ function ResponsiveAppBar() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                {settings.map((setting) => (
+
+
+                  <MenuItem >
+                  <Link to={'/personList'} style={{textDecoration: 'none', color: '#3475D9'}}>
+                  список учиников и учителей
+                  </Link>
+                  
+                  </MenuItem>
+                 <MenuItem onClick={log}>
+                    <Typography textAlign="center" style={{color: '#3475D9'}}>logout</Typography>
+                  </MenuItem>
+
+                {/* {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
-                ))}
+                ))} */}
               </Menu>
             </Box>
           ) : (
-            <Link to={'/login'}>
-              <Button variant="contained" color="secondary" href="/login">
-                login
-              </Button>
-            </Link>
+            <Box sx={{display: 'flex', gap: '20px'}}>
+                <Link to={'/teachers/login'}>
+                  <Button variant="contained" color="secondary" href="/teachers/login">
+                    я учитель
+                  </Button>
+                </Link>
+
+                <Link to={'students/login'}>
+                  <Button variant="contained" color="secondary" href="students/login">
+                  я учиник
+                  </Button>
+                </Link>
+            </Box>
+            
           )}
         </Toolbar>
       </Container>

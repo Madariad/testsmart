@@ -10,6 +10,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import TeachersSection from './TeachersSection'
 import StudentsSection from './StudentSection'
+import { Link } from 'react-router-dom';
+
 
 
 const ListSection = () => {
@@ -36,6 +38,11 @@ const ListSection = () => {
           <Button color="inherit" onClick={() => handleNavButtonClick('students')}>
             Ученики
           </Button>
+          <Link to={'/'}>
+                  <Button variant="contained" color="secondary" href="/">
+                     выйти
+                  </Button>
+            </Link>
         </Toolbar>
       </AppBar>
       {currentSection === 'teachers' ? <TeachersSection /> : <StudentsSection />}
