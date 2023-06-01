@@ -1,13 +1,22 @@
+const studentsModel = require('../model/studentsModel');
+
+const students = new studentsModel();
+
 function adminsPageViews(req, res) {
-    const data = {
-        title: 'Админ-панель',
-        users: [
-          { name: 'Пользователь 1', email: 'user1@example.com' },
-          { name: 'Пользователь 2', email: 'user2@example.com' },
-          { name: 'Пользователь 3', email: 'user3@example.com' }
-        ]
-      };
-      res.render('test', data);
+    const usersData = []
+     students.getStudents((users) => {
+       for (let i = 0; i < users.length; i++) {
+        const element = users[i];
+        usersData.push(element)
+        // console.log(element);
+        
+       }
+        // usersData.push(users)
+        
+      });
+      console.log(usersData);
+     
+      res.render('test', usersData);
 }
 
 module.exports = {adminsPageViews}

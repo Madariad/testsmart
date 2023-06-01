@@ -21,14 +21,8 @@ pool.getConnection((err, connection) => {
 })
 
 app.set('views', path.join(__dirname, 'views'));
+app.engine('hbs', expressHandlebars({ extname: '.hbs' }));
 app.set('view engine', 'hbs');
-app.set('layout', 'test'); 
-
-app.engine('hbs', exphbs({
-    extname: '.hbs',
-    defaultLayout: 'test', 
-    layoutsDir: path.join(app.get('views'), 'layouts')
-}));
 
 
 app.use(express.json())
