@@ -8,7 +8,6 @@ const pool = require('./utils/db')
 const adminRoutes = require('./routes/adminsRoutes') 
 const jwt = require('jsonwebtoken');
 const authenticateToken = require('./middleware/authenticateToken')
-const expressHandlebars = require('express-handlebars');
 const path = require('path')
 
 pool.getConnection((err, connection) => {
@@ -19,11 +18,11 @@ pool.getConnection((err, connection) => {
         console.log('database connection');
     }
 })
+const expressHandlebars = require('express-handlebars');
 
 app.set('views', path.join(__dirname, 'views'));
-app.engine('hbs', expressHandlebars({ extname: '.hbs' }));
+app.engine('.hbs', expressHandlebars.engine({ extname: '.hbs', defaultLayout: "main"}));
 app.set('view engine', 'hbs');
-
 
 app.use(express.json())
 app.use(cors());

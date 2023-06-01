@@ -15,13 +15,12 @@ import { Link } from 'react-router-dom';
 import axiosConfig from "../../axiosConfig";
 import {Grid} from '@material-ui/core'
 
-import { BrowserRouter as Router, Route, Navigate, Routes } from 'react-router-dom';
+
 
 
 
 const pages = ['особенность', 'отзывы', 'примеры', 'о нас'];
 
-const settings = ['профиль', 'список учиников и учителей', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -212,17 +211,7 @@ function ResponsiveAppBar() {
 
 
 
-            {/* {pages.map((page) => (
-              <Button
-                key={page}
-                href={'#' + page}
-                style={{color: '#05f5a5'}}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: '#a342ff', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))} */}
+         
           </Box>
 
           {loginState ? (
@@ -260,11 +249,6 @@ function ResponsiveAppBar() {
                     <Typography textAlign="center" style={{color: '#3475D9'}}>logout</Typography>
                   </MenuItem>
 
-                {/* {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))} */}
               </Menu>
             </Box>
           ) : (

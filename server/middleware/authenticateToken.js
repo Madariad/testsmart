@@ -1,3 +1,5 @@
+const secretKey = 'cZ#tT{m$g2M+LB8&9b6m7{DnQR@fThyJ';
+
 const authenticateToken = (req, res, next) => {
     const token = req.headers.authorization;
   

@@ -1,19 +1,279 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>{{ title }}</title>
+    <style>
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+        
+        /* Стили для навигационного меню */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: flex-start;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+        
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar li {
+            display: inline-block;
+            margin-left: 10px;
+        }
+        
+        .navbar li a {
+            text-decoration: none;
+            color: #333;
+            padding: 5px 10px;
+        }
+        
+        /* Стили для блока пользователей */
+        .students-block {
+            display: none;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+        
+        .students-block h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .students-block ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .students-block li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .students-block li strong {
+            font-weight: bold;
+            flex: 1;
+        }
+        
+        .students-block li button.delete-button {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        #students {
+            margin-top: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        .delete-button {
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        .delete-button:hover {
+            background-color: #cc0000;
+        }
+        
+        /* Применяется для таблицы */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        /* Применяется для ячеек заголовка таблицы */
+        th {
+            background-color: #f2f2f2;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        /* Применяется для ячеек данных таблицы */
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        /* Применяется для таблицы на мобильных устройствах */
+        @media screen and (max-width: 480px) {
+            /* Скрываем заголовки столбцов */
+            th {
+                display: none;
+            }
+            
+            /* Устанавливаем отображение ячеек данных в виде блоков */
+            td {
+                display: block;
+                border: none;
+            }
+            
+            /* Добавляем отступы и стили для каждой ячейки данных */
+            td:before {
+                content: attr(data-label);
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>jsjdk</h1>
-    <ul>
-        {{#each users}}
-            <li>
-                <strong>{{ this.name }}</strong>
-                <br>
-                {{ this.email }}
-            </li>
-        {{/each}}
-    </ul>
+    <div class="navbar">
+        <ul>
+            <li><a href="#" data-block="home-block">Home</a></li>
+            <li><a href="#" data-block="students-block">create students</a></li>
+            <li><a href="#" data-block="students">students list</a></li>
+
+             <li><a href="#" data-block="dashboard-block">create teachers</a></li>
+            <li><a href="#" data-block="teachers">teachers list</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>admin-panel</h1>
+        
+        <!-- Блоки с пользователями -->
+        <div id="home-block" class="students-block">
+            <h2>Home Block</h2>
+            <!-- Контент для блока Home -->
+        </div>
+        
+        <div id="students-block" class="students-block">
+             <h2>Create Students</h2>
+        <form id="create-students-form">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first_name" required><br>
+            
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last_name" required><br>
+            
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required><br>
+            
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            
+            <label for="phone-number">Phone Number:</label>
+            <input type="tel" id="phone-number" name="phone_number" required><br>
+            
+            <label for="date-of-birth">Date of Birth:</label>
+            <input type="date" id="date-of-birth" name="date_of_birth" required><br>
+            
+            <label for="date-of-registration">Date of Registration:</label>
+            <input type="datetime-local" id="date-of-registration" name="date_of_registration" required><br>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+            
+            <button type="submit">Create</button>
+        </div>
+        
+        <div id="students" class="students-block">
+            <h2>students Block</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Date of Birth</th>
+                            <th>Date of Registration</th>
+                            <th>Password</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each students}}
+                        <tr>
+                            <td>{{ this.first_name }}</td>
+                            <td>{{ this.last_name }}</td>
+                            <td>{{ this.age }}</td>
+                            <td>{{ this.gender }}</td>
+                            <td>{{ this.email }}</td>
+                            <td>{{ this.phone_number }}</td>
+                            <td>{{ this.date_of_birth }}</td>
+                            <td>{{ this.date_of_registration }}</td>
+                            <td>{{ this.password }}</td>
+                            <td><button class="delete-button" data-user="{{ this.id }}">Delete</button></td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        function handleMenuClick(event) {
+            event.preventDefault();
+            console.log('click');
+            
+            const studentsBlocks = document.querySelectorAll('.students-block');
+            studentsBlocks.forEach(block => {
+                block.style.display = 'none';
+            });
+            
+            const target = event.target;
+            const blockId = target.getAttribute('data-block');
+            const studentsBlock = document.getElementById(blockId);
+            studentsBlock.style.display = 'block';
+        }
+        
+        const menuLinks = document.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', handleMenuClick);
+        });
+        
+        const deleteButtons = document.querySelectorAll('.delete-button');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const userId = this.getAttribute('data-user');
+                console.log(userId);
+                // Выполняйте действия по удалению пользователя с помощью userId
+                // Например, отправьте AJAX-запрос на сервер для удаления пользователя
+                
+                // После удаления, можно обновить список пользователей на странице
+                // Например, перезагрузите страницу или обновите данные через AJAX
+            });
+        });
+    </script>
 </body>
 </html>
