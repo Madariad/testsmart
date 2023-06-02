@@ -35,7 +35,7 @@ const ContactSection = () => {
   const classes = useStyles();
 
   return (
-    <section className={classes.section}>
+    <section className={classes.section} id='contact'>
       <Container maxWidth="lg">
         <div style={{ overflow: 'hidden' }}>
           <Grid container justifyContent="center" style={{ width: '100%' }}>

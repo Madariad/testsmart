@@ -100,7 +100,7 @@ const ExampleSection = () => {
   }, []);
 
   return (
-    <section className={classes.exampleSection}>
+    <section className={classes.exampleSection} id='exaple'>
       <Container maxWidth="lg">
         <Typography variant="h4" align="center" gutterBottom>
           Применение в реальных ситуациях

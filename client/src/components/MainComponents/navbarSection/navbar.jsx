@@ -19,7 +19,7 @@ import {Grid} from '@material-ui/core'
 
 
 
-const pages = ['особенность', 'отзывы', 'примеры', 'о нас'];
+// const pages = ['особенность', 'отзывы', 'примеры', 'о нас'];
 
 
 function ResponsiveAppBar() {
@@ -140,11 +140,85 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+             
+             <MenuItem onClick={handleCloseNavMenu}>
+                <a href="#features" style={{textDecoration: 'none', color: 'inherit'}}>
+                     <Typography textAlign="center"> особенность</Typography>
+                </a>          
                 </MenuItem>
-              ))}
+
+
+
+                <MenuItem onClick={handleCloseNavMenu}>
+                <a href="#testimonal" style={{textDecoration: 'none', color: 'inherit'}}>
+                     <Typography textAlign="center"> отзывы</Typography>
+                </a>          
+                </MenuItem>
+
+                <MenuItem onClick={handleCloseNavMenu}>
+                <a href="#exaple" style={{textDecoration: 'none', color: 'inherit'}}>
+                     <Typography textAlign="center"> примеры</Typography>
+                </a>          
+                </MenuItem>
+
+
+                <MenuItem onClick={handleCloseNavMenu}>
+                <a href="#test" style={{textDecoration: 'none', color: 'inherit'}}>
+                     <Typography textAlign="center"> тест</Typography>
+                </a>          
+                </MenuItem>
+
+
+
+
+                <MenuItem onClick={handleCloseNavMenu}>
+                <a href="#about" style={{textDecoration: 'none', color: 'inherit'}}>
+                     <Typography textAlign="center"> о нас</Typography>
+                </a>          
+                </MenuItem>
+
+
+                <MenuItem onClick={handleCloseNavMenu}>
+                <a href="#faq" style={{textDecoration: 'none', color: 'inherit'}}>
+                     <Typography textAlign="center"> часто задаваемые вопросы</Typography>
+                </a>          
+                </MenuItem>
+
+
+                
+                <MenuItem onClick={handleCloseNavMenu}>
+                <a href="#contact" style={{textDecoration: 'none', color: 'inherit'}}>
+                     <Typography textAlign="center">контакты</Typography>
+                </a>          
+                </MenuItem>
+
+                <MenuItem onClick={handleCloseNavMenu}>
+                <a href="#calltoaction" style={{textDecoration: 'none', color: 'inherit'}}>
+                     <Typography textAlign="center">получить консультатцию</Typography>
+                </a>          
+                </MenuItem>
+
+
+
+
+
+                <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/teachers/login" style={{textDecoration: 'none', color: 'inherit'}}>
+                <Typography textAlign="center"> я учитель</Typography>
+              </Link>
+                </MenuItem>
+
+
+                <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/students/login" style={{textDecoration: 'none', color: 'inherit'}}>
+              <Typography textAlign="center">   я ученик</Typography>  
+              </Link>
+                </MenuItem>
+
+                
+        
+             
+            
             </Menu>
           </Box>
           <Tooltip href="/" title="logo" sx={{ display: { xs: 'flex', md: 'none' }, mr: 2 }}>
@@ -171,7 +245,7 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <Button
-                    href={'/'}
+                    href={'#features'}
                     style={{color: '#05f5a5'}}
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: '#a342ff', display: 'block' }}
@@ -179,7 +253,7 @@ function ResponsiveAppBar() {
                     особенность
                   </Button>
                   <Button
-                    href={'/'}
+                    href={'#testimonal'}
                     style={{color: '#05f5a5'}}
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: '#a342ff', display: 'block' }}
@@ -187,7 +261,7 @@ function ResponsiveAppBar() {
                     отзывы
                   </Button>
                   <Button
-                    href={'/'}
+                    href={'#exaple'}
                     style={{color: '#05f5a5'}}
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: '#a342ff', display: 'block' }}
@@ -195,7 +269,7 @@ function ResponsiveAppBar() {
                     примеры
                   </Button>
                   <Button
-                    href={'/'}
+                    href={'#about'}
                     style={{color: '#05f5a5'}}
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: '#a342ff', display: 'block' }}
@@ -205,13 +279,37 @@ function ResponsiveAppBar() {
 
 
 
+                  {/* <Button
+                    href={'#faq'}
+                    style={{color: '#05f5a5'}}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: '#a342ff', display: 'block' }}
+                  >
+                   часто задаваемые вопросы
+                  </Button>
 
 
 
+                  <Button
+                    href={'#contact'}
+                    style={{color: '#05f5a5'}}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: '#a342ff', display: 'block' }}
+                  >
+                    контакты
+                  </Button>
 
+                  <Button
+                    href={'#calltoaction'}
+                    style={{color: '#05f5a5'}}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: '#a342ff', display: 'block' }}
+                  >
+                   получить консультатцию
+                  </Button> */}
 
+                  
 
-         
           </Box>
 
           {loginState ? (
@@ -252,19 +350,33 @@ function ResponsiveAppBar() {
               </Menu>
             </Box>
           ) : (
-            <Box sx={{display: 'flex', gap: '20px'}}>
-                <Link to={'/teachers/login'}>
-                  <Button variant="contained" color="secondary" href="/teachers/login">
-                    я учитель
-                  </Button>
-                </Link>
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '5px',
+              '@media (max-width: 884px)': {
+                display: 'none'
 
-                <Link to={'students/login'}>
-                  <Button variant="contained" color="secondary" href="students/login">
-                  я учиник
-                  </Button>
-                </Link>
+                
+              },
+              '@media (min-width: 600px)': {
+                flexDirection: 'row',
+                gap: '2em',
+              }
+            }}>
+              <Link to="/teachers/login">
+                <Button variant="contained" color="secondary" href="/teachers/login" sx={{ width: '100%' }}>
+                  я учитель
+                </Button>
+              </Link>
+        
+              <Link to="/students/login">
+                <Button variant="contained" color="secondary" href="/students/login" sx={{ width: '100%' }}>
+                  я ученик
+                </Button>
+              </Link>
             </Box>
+            
             
           )}
         </Toolbar>

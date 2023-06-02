@@ -45,9 +45,9 @@ const FeaturesSection = () => {
     width: '100%',
     color: 'transparent',
     backgroundColor: '#d6fff1',
-    top: '-70px'}}> 
+    top: '-70px',}}> 
 
-<Container maxWidth="lg" sx={{ py: 8 }} >
+<Container maxWidth="lg" sx={{ py: 8 }}  justifyContent="center" id="features">
 
 
 <Typography variant="h4" component="h2" align="center" sx={{ mb: 4, color: '#333' }}>

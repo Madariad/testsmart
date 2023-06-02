@@ -42,7 +42,7 @@ const AboutSection = () => {
   const classes = useStyles();
 
   return (
-    <section className={classes.section}>
+    <section className={classes.section} id='about'>
       <Container maxWidth="lg">
         <Typography variant="h2" className={classes.title}>
           О нас

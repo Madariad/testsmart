@@ -71,7 +71,7 @@ const TestimonialSection = () => {
   ];
 
   return (
-    <section className={classes.testimonialSection}>
+    <section className={classes.testimonialSection} id='testimonal'>
      <Container maxWidth="lg">
      <Typography variant="h4" align="center" gutterBottom>
         Отзывы клиентов

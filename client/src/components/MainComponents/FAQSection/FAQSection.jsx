@@ -50,7 +50,7 @@ const FAQSection = () => {
   const classes = useStyles();
 
   return (
-    <section className={classes.section}>
+    <section className={classes.section} id='faq'>
       <Container maxWidth="lg">
         <Grid container justifyContent="center">
           <Grid item xs={12}>

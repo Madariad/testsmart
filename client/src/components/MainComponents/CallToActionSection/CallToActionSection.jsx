@@ -45,7 +45,7 @@ const CallToActionSection = () => {
   const classes = useStyles();
 
   return (
-    <section className={classes.section}>
+    <section className={classes.section} id='calltoaction'>
       <Container maxWidth="lg">
         <div style={{ overflow: 'hidden' }}>
           <Grid container justifyContent="center" style={{ width: '100%' }}>

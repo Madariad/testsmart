@@ -54,7 +54,7 @@ const CallToActionSection = () => {
   const classes = useStyles();
 
   return (
-    <section className={classes.section}>
+    <section className={classes.section} id='test'>
       <Typography variant="h2" component="h2" className={classes.title}>
         Добро пожаловать на наш тест!
       </Typography>
